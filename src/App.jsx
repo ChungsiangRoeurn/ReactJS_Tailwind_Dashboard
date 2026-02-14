@@ -107,7 +107,7 @@ export default function ValentinesFlowers() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 flex items-center justify-center p-4 overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-orange-900 flex items-center justify-center p-3 sm:p-6 md:p-8 overflow-hidden relative">
       {/* Animated gradient overlay */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient"></div>
@@ -146,20 +146,20 @@ export default function ValentinesFlowers() {
               animationDuration: `${15 + i * 2}s`,
             }}
           >
-            <div className="w-16 h-16 border-2 border-white opacity-10 rotate-45 animate-spin-slow"></div>
+            <div className="w-8 h-8 sm:w-12 md:w-16 sm:h-12 md:h-16 border-2 border-white opacity-10 rotate-45 animate-spin-slow"></div>
           </div>
         ))}
       </div>
 
-      <div className="relative z-10 text-center">
+      <div className="relative z-10 text-center w-full max-w-6xl">
         {/* Title with glowing effect */}
         <div
-          className={`mb-8 transition-all duration-1000 ${
+          className={`mb-4 sm:mb-6 md:mb-8 transition-all duration-1000 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
           }`}
         >
           <h1
-            className="text-6xl md:text-8xl font-bold mb-4 animate-glow-pulse"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-2 sm:mb-3 md:mb-4 animate-glow-pulse px-2"
             style={{
               fontFamily: "'Poppins', sans-serif",
               background:
@@ -175,7 +175,7 @@ export default function ValentinesFlowers() {
             Happy Valentine's Day
           </h1>
           <p
-            className="text-3xl md:text-4xl text-pink-300 animate-pulse-slow"
+            className="text-xl xs:text-2xl sm:text-3xl md:text-4xl text-pink-300 animate-pulse-slow px-2"
             style={{ fontFamily: "'Caveat', cursive" }}
           >
             ✨ To my dearest Pidoar ✨
@@ -184,13 +184,13 @@ export default function ValentinesFlowers() {
 
         {/* Progress Indicator */}
         <div
-          className={`mb-6 transition-all duration-500 ${
+          className={`mb-4 sm:mb-6 transition-all duration-500 px-2 ${
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="inline-block px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg">
+          <div className="inline-block px-4 py-2 sm:px-6 sm:py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full shadow-lg">
             <p
-              className="text-lg md:text-xl text-white font-medium"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-medium"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {getProgressText()}
@@ -198,7 +198,7 @@ export default function ValentinesFlowers() {
           </div>
 
           {/* Progress bar */}
-          <div className="mt-3 w-64 h-2 bg-white/10 rounded-full mx-auto overflow-hidden">
+          <div className="mt-2 sm:mt-3 w-48 sm:w-56 md:w-64 h-2 bg-white/10 rounded-full mx-auto overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 transition-all duration-500 ease-out"
               style={{
@@ -211,9 +211,9 @@ export default function ValentinesFlowers() {
 
         {/* Flower Bouquet with glassmorphism vase */}
         <div className="relative inline-block">
-          {/* Modern glassmorphism vase */}
+          {/* Modern glassmorphism vase - Responsive sizing */}
           <div
-            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-48 backdrop-blur-xl bg-white/10 border border-white/20 rounded-t-3xl transition-all duration-1000 delay-500 shadow-2xl ${
+            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-32 xs:w-28 xs:h-36 sm:w-32 sm:h-40 md:w-40 md:h-48 backdrop-blur-xl bg-white/10 border border-white/20 rounded-t-3xl transition-all duration-1000 delay-500 shadow-2xl ${
               isLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -223,12 +223,12 @@ export default function ValentinesFlowers() {
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-cyan-300/20 via-purple-300/20 to-pink-300/20 animate-shimmer"></div>
-            <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-28 h-3 bg-white/30 rounded-full backdrop-blur-sm"></div>
+            <div className="absolute top-4 sm:top-6 left-1/2 transform -translate-x-1/2 w-20 xs:w-22 sm:w-24 md:w-28 h-2 sm:h-3 bg-white/30 rounded-full backdrop-blur-sm"></div>
             {/* Sparkles on vase */}
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
-                className="absolute w-2 h-2 bg-white rounded-full animate-twinkle"
+                className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-twinkle"
                 style={{
                   left: `${20 + Math.random() * 60}%`,
                   top: `${20 + Math.random() * 60}%`,
@@ -238,20 +238,20 @@ export default function ValentinesFlowers() {
             ))}
           </div>
 
-          {/* Flowers Container */}
-          <div className="relative w-[500px] h-[450px]">
-            {/* Rainbow colored flowers */}
+          {/* Flowers Container - Responsive sizing */}
+          <div className="relative w-[280px] h-[280px] xs:w-[320px] xs:h-[320px] sm:w-[380px] sm:h-[360px] md:w-[450px] md:h-[420px] lg:w-[500px] lg:h-[450px] mx-auto">
+            {/* Rainbow colored flowers - Adjusted positions for mobile */}
             {[
               {
                 color: "from-red-400 via-pink-500 to-red-600",
-                pos: "left-1/2 top-32 -translate-x-1/2",
+                pos: "left-1/2 top-24 xs:top-28 sm:top-32 -translate-x-1/2",
                 size: "large",
                 delay: 700,
                 index: 0,
               },
               {
                 color: "from-purple-400 via-pink-400 to-purple-600",
-                pos: "left-20 top-44",
+                pos: "left-8 xs:left-12 sm:left-16 md:left-20 top-32 xs:top-36 sm:top-40 md:top-44",
                 size: "medium",
                 delay: 900,
                 rotate: "-15deg",
@@ -259,7 +259,7 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-orange-400 via-yellow-400 to-orange-600",
-                pos: "right-20 top-44",
+                pos: "right-8 xs:right-12 sm:right-16 md:right-20 top-32 xs:top-36 sm:top-40 md:top-44",
                 size: "medium",
                 delay: 1000,
                 rotate: "15deg",
@@ -267,7 +267,7 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-blue-400 via-cyan-400 to-blue-600",
-                pos: "left-32 top-24",
+                pos: "left-16 xs:left-20 sm:left-24 md:left-32 top-16 xs:top-18 sm:top-20 md:top-24",
                 size: "medium",
                 delay: 800,
                 rotate: "-25deg",
@@ -275,7 +275,7 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-green-400 via-emerald-400 to-green-600",
-                pos: "right-32 top-24",
+                pos: "right-16 xs:right-20 sm:right-24 md:right-32 top-16 xs:top-18 sm:top-20 md:top-24",
                 size: "medium",
                 delay: 1100,
                 rotate: "25deg",
@@ -283,7 +283,7 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-fuchsia-400 via-purple-500 to-fuchsia-600",
-                pos: "left-8 top-36",
+                pos: "left-2 xs:left-4 sm:left-6 md:left-8 top-26 xs:top-28 sm:top-32 md:top-36",
                 size: "small",
                 delay: 1200,
                 rotate: "-35deg",
@@ -291,7 +291,7 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-yellow-400 via-amber-400 to-yellow-600",
-                pos: "right-8 top-36",
+                pos: "right-2 xs:right-4 sm:right-6 md:right-8 top-26 xs:top-28 sm:top-32 md:top-36",
                 size: "small",
                 delay: 1300,
                 rotate: "35deg",
@@ -299,14 +299,14 @@ export default function ValentinesFlowers() {
               },
               {
                 color: "from-rose-400 via-pink-500 to-rose-600",
-                pos: "left-1/2 top-20 -translate-x-1/2 -translate-x-16",
+                pos: "left-1/2 top-14 xs:top-16 sm:top-18 md:top-20 -translate-x-1/2 -translate-x-10 xs:-translate-x-12 sm:-translate-x-14 md:-translate-x-16",
                 size: "small",
                 delay: 1400,
                 index: 7,
               },
               {
                 color: "from-indigo-400 via-blue-500 to-indigo-600",
-                pos: "left-1/2 top-20 -translate-x-1/2 translate-x-16",
+                pos: "left-1/2 top-14 xs:top-16 sm:top-18 md:top-20 -translate-x-1/2 translate-x-10 xs:translate-x-12 sm:translate-x-14 md:translate-x-16",
                 size: "small",
                 delay: 1500,
                 index: 8,
@@ -318,7 +318,7 @@ export default function ValentinesFlowers() {
                   key={flower.index}
                   className={`absolute ${flower.pos} transform transition-all duration-500 cursor-pointer ${
                     isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-0"
-                  } ${isClicked ? "scale-110" : "hover:scale-125"} ${
+                  } ${isClicked ? "scale-110" : "hover:scale-125 active:scale-125"} ${
                     !isClicked ? "animate-bounce-gentle" : ""
                   }`}
                   style={{
@@ -338,8 +338,10 @@ export default function ValentinesFlowers() {
                   />
                   {/* Checkmark indicator when clicked */}
                   {isClicked && (
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-400 rounded-full flex items-center justify-center shadow-lg animate-scale-in">
-                      <span className="text-white text-xl font-bold">✓</span>
+                    <div className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-400 rounded-full flex items-center justify-center shadow-lg animate-scale-in">
+                      <span className="text-white text-base sm:text-xl font-bold">
+                        ✓
+                      </span>
                     </div>
                   )}
                 </div>
@@ -350,63 +352,63 @@ export default function ValentinesFlowers() {
 
         {/* Surprise Name Reveal Section */}
         <div
-          className={`mt-16 transition-all duration-1000 delay-1600 ${
+          className={`mt-8 sm:mt-12 md:mt-16 px-2 transition-all duration-1000 delay-1600 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           {!showNameReveal ? (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <p
-                className="text-2xl md:text-3xl text-pink-200 italic"
+                className="text-xl xs:text-2xl sm:text-2xl md:text-3xl text-pink-200 italic"
                 style={{ fontFamily: "'Caveat', cursive" }}
               >
                 With all my love,
               </p>
               <p
-                className="text-3xl md:text-4xl text-purple-200"
+                className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl text-purple-200"
                 style={{ fontFamily: "'Caveat', cursive" }}
               >
                 From someone who dreams of you ♥
               </p>
               <p
-                className="text-lg text-pink-300 mt-2 animate-pulse-slow"
+                className="text-base xs:text-lg sm:text-lg text-pink-300 mt-2 animate-pulse-slow"
                 style={{ fontFamily: "'Caveat', cursive" }}
               >
                 (Find all the flowers to discover who... 🌸✨)
               </p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {!nameRevealed ? (
                 <div className="animate-fade-in-up">
                   <p
-                    className="text-2xl md:text-3xl text-pink-200 italic mb-4"
+                    className="text-xl xs:text-2xl sm:text-2xl md:text-3xl text-pink-200 italic mb-3 sm:mb-4"
                     style={{ fontFamily: "'Caveat', cursive" }}
                   >
                     🎁 You found all the flowers!
                   </p>
                   <button
                     onClick={handleRevealName}
-                    className="group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white text-xl font-bold shadow-2xl hover:shadow-pink-500/50 transition-all duration-300 hover:scale-110 animate-pulse-button"
+                    className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white text-lg sm:text-xl font-bold shadow-2xl hover:shadow-pink-500/50 active:shadow-pink-500/50 transition-all duration-300 hover:scale-110 active:scale-110 animate-pulse-button"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     <span className="relative z-10">
                       Click for Your Surprise! 🎉
                     </span>
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-gradient"></div>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 animate-gradient"></div>
                   </button>
                 </div>
               ) : (
-                <div className="animate-name-reveal space-y-4">
+                <div className="animate-name-reveal space-y-3 sm:space-y-4">
                   <p
-                    className="text-2xl md:text-3xl text-pink-200 italic"
+                    className="text-xl xs:text-2xl sm:text-2xl md:text-3xl text-pink-200 italic"
                     style={{ fontFamily: "'Caveat', cursive" }}
                   >
                     With all my love,
                   </p>
                   <div className="relative inline-block">
                     <p
-                      className="text-5xl md:text-7xl font-bold animate-rainbow-text relative z-10"
+                      className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-bold animate-rainbow-text relative z-10"
                       style={{
                         fontFamily: "'Pacifico', cursive",
                         background:
@@ -423,11 +425,11 @@ export default function ValentinesFlowers() {
                     {[...Array(12)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute w-4 h-4 bg-yellow-300 rounded-full animate-sparkle-around"
+                        className="absolute w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-yellow-300 rounded-full animate-sparkle-around"
                         style={{
                           top: "50%",
                           left: "50%",
-                          transform: `translate(-50%, -50%) rotate(${i * 30}deg) translateY(-80px)`,
+                          transform: `translate(-50%, -50%) rotate(${i * 30}deg) translateY(-50px) sm:translateY(-60px) md:translateY(-80px)`,
                           animationDelay: `${i * 0.1}s`,
                           boxShadow: "0 0 10px rgba(255,215,0,0.8)",
                         }}
@@ -435,7 +437,7 @@ export default function ValentinesFlowers() {
                     ))}
                   </div>
                   <p
-                    className="text-xl md:text-2xl text-purple-200 mt-6 animate-fade-in"
+                    className="text-lg xs:text-xl sm:text-xl md:text-2xl text-purple-200 mt-4 sm:mt-6 animate-fade-in"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     💝 Forever yours 💝
@@ -443,17 +445,17 @@ export default function ValentinesFlowers() {
 
                   {/* Special Photo Reveal - SURPRISE! */}
                   {showPhoto && (
-                    <div className="mt-12 animate-photo-reveal">
-                      <div className="relative max-w-md mx-auto">
+                    <div className="mt-8 sm:mt-10 md:mt-12 animate-photo-reveal">
+                      <div className="relative max-w-xs sm:max-w-sm md:max-w-md mx-auto px-2">
                         {/* Sparkle explosions around photo */}
                         {[...Array(20)].map((_, i) => (
                           <div
                             key={i}
-                            className="absolute w-3 h-3 bg-yellow-400 rounded-full animate-sparkle-explosion"
+                            className="absolute w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full animate-sparkle-explosion"
                             style={{
                               top: "50%",
                               left: "50%",
-                              transform: `translate(-50%, -50%) rotate(${i * 18}deg) translateY(-150px)`,
+                              transform: `translate(-50%, -50%) rotate(${i * 18}deg) translateY(-100px) sm:translateY(-120px) md:translateY(-150px)`,
                               animationDelay: `${i * 0.05}s`,
                               boxShadow: "0 0 15px rgba(255,215,0,0.8)",
                             }}
@@ -461,36 +463,36 @@ export default function ValentinesFlowers() {
                         ))}
 
                         {/* Photo container with magical border */}
-                        <div className="relative p-2 bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 rounded-3xl animate-border-spin shadow-2xl">
-                          <div className="relative overflow-hidden rounded-2xl">
+                        <div className="relative p-1.5 sm:p-2 bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 rounded-2xl sm:rounded-3xl animate-border-spin shadow-2xl">
+                          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl">
                             <img
                               src={specialPhoto}
                               alt="Special Memory"
-                              className="w-full h-auto rounded-2xl animate-photo-zoom"
-                              style={{ maxHeight: "400px", objectFit: "cover" }}
+                              className="w-full h-auto rounded-xl sm:rounded-2xl animate-photo-zoom"
+                              style={{ maxHeight: "300px", objectFit: "cover" }}
                             />
                             {/* Photo overlay glow effect */}
                             <div className="absolute inset-0 bg-gradient-to-t from-pink-500/20 to-transparent pointer-events-none"></div>
                           </div>
 
                           {/* Floating hearts around photo */}
-                          <div className="absolute -top-6 -left-6 text-5xl animate-heart-pulse">
+                          <div className="absolute -top-4 sm:-top-6 -left-4 sm:-left-6 text-3xl sm:text-4xl md:text-5xl animate-heart-pulse">
                             💕
                           </div>
                           <div
-                            className="absolute -top-6 -right-6 text-5xl animate-heart-pulse"
+                            className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 text-3xl sm:text-4xl md:text-5xl animate-heart-pulse"
                             style={{ animationDelay: "0.3s" }}
                           >
                             💖
                           </div>
                           <div
-                            className="absolute -bottom-6 -left-6 text-5xl animate-heart-pulse"
+                            className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 text-3xl sm:text-4xl md:text-5xl animate-heart-pulse"
                             style={{ animationDelay: "0.6s" }}
                           >
                             💗
                           </div>
                           <div
-                            className="absolute -bottom-6 -right-6 text-5xl animate-heart-pulse"
+                            className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 text-3xl sm:text-4xl md:text-5xl animate-heart-pulse"
                             style={{ animationDelay: "0.9s" }}
                           >
                             💝
@@ -499,11 +501,11 @@ export default function ValentinesFlowers() {
 
                         {/* Caption under photo */}
                         <div
-                          className="mt-8 animate-fade-in-up"
+                          className="mt-6 sm:mt-8 animate-fade-in-up"
                           style={{ animationDelay: "0.5s" }}
                         >
                           <p
-                            className="text-3xl md:text-4xl text-pink-200 font-bold mb-2"
+                            className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl text-pink-200 font-bold mb-2"
                             style={{
                               fontFamily: "'Pacifico', cursive",
                               textShadow: "0 0 20px rgba(255,182,193,0.5)",
@@ -512,7 +514,7 @@ export default function ValentinesFlowers() {
                             This is Us... 💕
                           </p>
                           <p
-                            className="text-xl text-purple-200 italic"
+                            className="text-lg xs:text-xl sm:text-xl text-purple-200 italic"
                             style={{ fontFamily: "'Caveat', cursive" }}
                           >
                             Our beautiful moments together ✨
@@ -524,41 +526,41 @@ export default function ValentinesFlowers() {
 
                   {/* Romantic Wishes Section */}
                   {showWishes && (
-                    <div className="mt-12 animate-fade-in-up">
-                      <div className="max-w-2xl mx-auto">
+                    <div className="mt-8 sm:mt-10 md:mt-12 animate-fade-in-up px-2">
+                      <div className="max-w-xl sm:max-w-2xl mx-auto">
                         {/* Wish Card */}
                         <div
-                          className={`relative px-8 py-6 bg-gradient-to-br ${romanticWishes[currentWish].color} rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20 animate-wish-appear`}
+                          className={`relative px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 bg-gradient-to-br ${romanticWishes[currentWish].color} rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-sm border border-white/20 animate-wish-appear`}
                           key={currentWish}
                         >
                           {/* Floating hearts around wish */}
-                          <div className="absolute -top-4 -left-4 text-4xl animate-float-gentle">
+                          <div className="absolute -top-3 sm:-top-4 -left-3 sm:-left-4 text-2xl sm:text-3xl md:text-4xl animate-float-gentle">
                             ❤️
                           </div>
                           <div
-                            className="absolute -top-4 -right-4 text-4xl animate-float-gentle"
+                            className="absolute -top-3 sm:-top-4 -right-3 sm:-right-4 text-2xl sm:text-3xl md:text-4xl animate-float-gentle"
                             style={{ animationDelay: "0.5s" }}
                           >
                             💕
                           </div>
                           <div
-                            className="absolute -bottom-4 left-1/4 text-3xl animate-float-gentle"
+                            className="absolute -bottom-3 sm:-bottom-4 left-1/4 text-xl sm:text-2xl md:text-3xl animate-float-gentle"
                             style={{ animationDelay: "1s" }}
                           >
                             💗
                           </div>
                           <div
-                            className="absolute -bottom-4 right-1/4 text-3xl animate-float-gentle"
+                            className="absolute -bottom-3 sm:-bottom-4 right-1/4 text-xl sm:text-2xl md:text-3xl animate-float-gentle"
                             style={{ animationDelay: "1.5s" }}
                           >
                             💖
                           </div>
 
-                          <div className="text-6xl mb-4 animate-bounce-subtle">
+                          <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 animate-bounce-subtle">
                             {romanticWishes[currentWish].emoji}
                           </div>
                           <p
-                            className="text-xl md:text-2xl text-white font-medium leading-relaxed text-center"
+                            className="text-base xs:text-lg sm:text-xl md:text-2xl text-white font-medium leading-relaxed text-center"
                             style={{ fontFamily: "'Poppins', sans-serif" }}
                           >
                             {romanticWishes[currentWish].wish}
@@ -566,11 +568,11 @@ export default function ValentinesFlowers() {
                         </div>
 
                         {/* Progress dots */}
-                        <div className="flex justify-center gap-2 mt-6">
+                        <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
                           {romanticWishes.map((_, idx) => (
                             <div
                               key={idx}
-                              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                                 idx === currentWish
                                   ? "bg-pink-400 scale-125"
                                   : idx < currentWish
@@ -585,21 +587,21 @@ export default function ValentinesFlowers() {
                         {currentWish < romanticWishes.length - 1 ? (
                           <button
                             onClick={handleNextWish}
-                            className="mt-6 px-8 py-3 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full text-white text-lg font-bold shadow-lg hover:shadow-pink-500/50 transition-all duration-300 hover:scale-105 animate-pulse-gentle"
+                            className="mt-4 sm:mt-6 px-6 py-2.5 sm:px-8 sm:py-3 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full text-white text-base sm:text-lg font-bold shadow-lg hover:shadow-pink-500/50 active:shadow-pink-500/50 transition-all duration-300 hover:scale-105 active:scale-105 animate-pulse-gentle"
                             style={{ fontFamily: "'Poppins', sans-serif" }}
                           >
                             Read Next Message 💌
                           </button>
                         ) : (
-                          <div className="mt-8 space-y-8">
+                          <div className="mt-6 sm:mt-8 space-y-6 sm:space-y-8">
                             {/* The Most Important Message */}
-                            <div className="animate-fade-in-slow px-6 py-8 bg-gradient-to-br from-red-500 via-pink-500 to-rose-500 rounded-3xl shadow-2xl border-4 border-white/30 relative overflow-hidden">
+                            <div className="animate-fade-in-slow px-4 py-6 sm:px-6 sm:py-8 bg-gradient-to-br from-red-500 via-pink-500 to-rose-500 rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-white/30 relative overflow-hidden">
                               {/* Animated hearts background */}
                               <div className="absolute inset-0 overflow-hidden">
                                 {[...Array(15)].map((_, i) => (
                                   <div
                                     key={i}
-                                    className="absolute text-white/20 text-4xl animate-heart-float"
+                                    className="absolute text-white/20 text-2xl sm:text-3xl md:text-4xl animate-heart-float"
                                     style={{
                                       left: `${Math.random() * 100}%`,
                                       top: `${Math.random() * 100}%`,
@@ -613,11 +615,11 @@ export default function ValentinesFlowers() {
                               </div>
 
                               <div className="relative z-10">
-                                <div className="text-6xl mb-6 animate-heartbeat">
+                                <div className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6 animate-heartbeat">
                                   💕
                                 </div>
                                 <p
-                                  className="text-3xl md:text-5xl text-white font-bold leading-tight mb-4 animate-text-glow"
+                                  className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-white font-bold leading-tight mb-3 sm:mb-4 animate-text-glow"
                                   style={{
                                     fontFamily: "'Pacifico', cursive",
                                     textShadow:
@@ -627,21 +629,21 @@ export default function ValentinesFlowers() {
                                   Can we have a beautiful love together again
                                   BABY?
                                 </p>
-                                <div className="flex justify-center gap-4 mt-6">
+                                <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6">
                                   <span
-                                    className="text-5xl animate-bounce-heart"
+                                    className="text-3xl sm:text-4xl md:text-5xl animate-bounce-heart"
                                     style={{ animationDelay: "0s" }}
                                   >
                                     💖
                                   </span>
                                   <span
-                                    className="text-5xl animate-bounce-heart"
+                                    className="text-3xl sm:text-4xl md:text-5xl animate-bounce-heart"
                                     style={{ animationDelay: "0.2s" }}
                                   >
                                     💝
                                   </span>
                                   <span
-                                    className="text-5xl animate-bounce-heart"
+                                    className="text-3xl sm:text-4xl md:text-5xl animate-bounce-heart"
                                     style={{ animationDelay: "0.4s" }}
                                   >
                                     💗
@@ -656,13 +658,13 @@ export default function ValentinesFlowers() {
                               style={{ animationDelay: "0.5s" }}
                             >
                               <p
-                                className="text-3xl md:text-4xl text-pink-200 font-bold mb-4"
+                                className="text-2xl xs:text-3xl sm:text-3xl md:text-4xl text-pink-200 font-bold mb-3 sm:mb-4"
                                 style={{ fontFamily: "'Pacifico', cursive" }}
                               >
                                 Will you be mine? 🌹
                               </p>
                               <p
-                                className="text-lg text-purple-200 italic"
+                                className="text-base xs:text-lg sm:text-lg text-purple-200 italic"
                                 style={{ fontFamily: "'Caveat', cursive" }}
                               >
                                 Let these flowers bloom with our love story ✨
@@ -1168,12 +1170,27 @@ export default function ValentinesFlowers() {
 
 function Flower({ color, size, isActive, isClicked }) {
   const sizes = {
-    small: { petal: "w-6 h-10", center: "w-6 h-6" },
-    medium: { petal: "w-8 h-14", center: "w-8 h-8" },
-    large: { petal: "w-10 h-16", center: "w-10 h-10" },
+    small: {
+      petal: "w-4 h-7 xs:w-5 xs:h-8 sm:w-6 sm:h-10",
+      center: "w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6",
+    },
+    medium: {
+      petal: "w-5 h-8 xs:w-6 xs:h-10 sm:w-7 sm:h-12 md:w-8 md:h-13",
+      center: "w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8",
+    },
+    large: {
+      petal: "w-6 h-10 xs:w-7 xs:h-11 sm:w-8 sm:h-13 md:w-10 md:h-15",
+      center: "w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 md:w-10 md:h-10",
+    },
   };
 
   const currentSize = sizes[size];
+
+  const petalOffset = {
+    small: "12",
+    medium: "14",
+    large: "16",
+  };
 
   return (
     <div
@@ -1189,13 +1206,13 @@ function Flower({ color, size, isActive, isClicked }) {
     >
       {/* Stem with gradient */}
       <div
-        className="absolute left-1/2 top-full transform -translate-x-1/2 w-2 h-24 bg-gradient-to-b from-green-400 to-green-600 rounded-full shadow-lg"
+        className="absolute left-1/2 top-full transform -translate-x-1/2 w-1.5 h-16 xs:w-2 xs:h-20 sm:h-24 bg-gradient-to-b from-green-400 to-green-600 rounded-full shadow-lg"
         style={{ transformOrigin: "top" }}
       >
         {/* Animated Leaf 1 */}
-        <div className="absolute left-0 top-8 w-6 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full transform -rotate-45 origin-top-right animate-leaf-sway"></div>
+        <div className="absolute left-0 top-6 sm:top-8 w-4 h-7 xs:w-5 xs:h-8 sm:w-6 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full transform -rotate-45 origin-top-right animate-leaf-sway"></div>
         {/* Animated Leaf 2 */}
-        <div className="absolute right-0 top-16 w-6 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full transform rotate-45 origin-top-left animate-leaf-sway-reverse"></div>
+        <div className="absolute right-0 top-12 sm:top-16 w-4 h-7 xs:w-5 xs:h-8 sm:w-6 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full transform rotate-45 origin-top-left animate-leaf-sway-reverse"></div>
       </div>
 
       {/* Petals with glow effect */}
@@ -1209,9 +1226,7 @@ function Flower({ color, size, isActive, isClicked }) {
             style={{
               top: "50%",
               left: "50%",
-              transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-${
-                size === "large" ? "20" : size === "medium" ? "16" : "12"
-              }px)`,
+              transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-${petalOffset[size]}px)`,
               transformOrigin: "center",
               filter: "drop-shadow(0 0 8px rgba(255,255,255,0.3))",
               boxShadow: isActive ? "0 0 20px rgba(255,255,255,0.8)" : "none",
@@ -1240,7 +1255,7 @@ function Flower({ color, size, isActive, isClicked }) {
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-0.5 h-1.5 bg-gradient-to-t from-orange-600 to-yellow-400 rounded-full animate-stamen-dance"
+              className="absolute w-0.5 h-1 xs:h-1.5 bg-gradient-to-t from-orange-600 to-yellow-400 rounded-full animate-stamen-dance"
               style={{
                 top: "50%",
                 left: "50%",
@@ -1262,12 +1277,12 @@ function Flower({ color, size, isActive, isClicked }) {
             {[...Array(8)].map((_, i) => (
               <div
                 key={`sparkle-${i}`}
-                className="absolute w-2 h-2 bg-white rounded-full animate-sparkle-burst"
+                className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-sparkle-burst"
                 style={{
                   top: "50%",
                   left: "50%",
                   transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-${
-                    size === "large" ? "40" : size === "medium" ? "30" : "25"
+                    size === "large" ? "30" : size === "medium" ? "25" : "20"
                   }px)`,
                   animationDelay: `${i * 0.05}s`,
                   boxShadow: "0 0 10px rgba(255,255,255,0.8)",
@@ -1332,10 +1347,10 @@ function Flower({ color, size, isActive, isClicked }) {
         @keyframes stamen-dance {
           0%,
           100% {
-            height: 1.5rem;
+            height: 0.375rem;
           }
           50% {
-            height: 2rem;
+            height: 0.5rem;
           }
         }
 
