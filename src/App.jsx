@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import specialPhoto from "./assets/doardoar.jpg";
 
 export default function ValentinesFlowers() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -9,6 +10,7 @@ export default function ValentinesFlowers() {
   const [nameRevealed, setNameRevealed] = useState(false);
   const [showWishes, setShowWishes] = useState(false);
   const [currentWish, setCurrentWish] = useState(0);
+  const [showPhoto, setShowPhoto] = useState(false);
 
   const romanticWishes = [
     {
@@ -81,10 +83,14 @@ export default function ValentinesFlowers() {
 
   const handleRevealName = () => {
     setNameRevealed(true);
-    // Start wishes after a short delay
+    // Show photo first for dramatic effect
+    setTimeout(() => {
+      setShowPhoto(true);
+    }, 1000);
+    // Start wishes after photo appears
     setTimeout(() => {
       setShowWishes(true);
-    }, 2000);
+    }, 3000);
   };
 
   const handleNextWish = () => {
@@ -411,7 +417,7 @@ export default function ValentinesFlowers() {
                         backgroundClip: "text",
                       }}
                     >
-                      Xiang Xiang ♥
+                      xiang ♥
                     </p>
                     {/* Sparkle effects around name */}
                     {[...Array(12)].map((_, i) => (
@@ -434,6 +440,87 @@ export default function ValentinesFlowers() {
                   >
                     💝 Forever yours 💝
                   </p>
+
+                  {/* Special Photo Reveal - SURPRISE! */}
+                  {showPhoto && (
+                    <div className="mt-12 animate-photo-reveal">
+                      <div className="relative max-w-md mx-auto">
+                        {/* Sparkle explosions around photo */}
+                        {[...Array(20)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute w-3 h-3 bg-yellow-400 rounded-full animate-sparkle-explosion"
+                            style={{
+                              top: "50%",
+                              left: "50%",
+                              transform: `translate(-50%, -50%) rotate(${i * 18}deg) translateY(-150px)`,
+                              animationDelay: `${i * 0.05}s`,
+                              boxShadow: "0 0 15px rgba(255,215,0,0.8)",
+                            }}
+                          />
+                        ))}
+
+                        {/* Photo container with magical border */}
+                        <div className="relative p-2 bg-gradient-to-br from-pink-400 via-purple-400 to-blue-400 rounded-3xl animate-border-spin shadow-2xl">
+                          <div className="relative overflow-hidden rounded-2xl">
+                            <img
+                              src={specialPhoto}
+                              alt="Special Memory"
+                              className="w-full h-auto rounded-2xl animate-photo-zoom"
+                              style={{ maxHeight: "400px", objectFit: "cover" }}
+                            />
+                            {/* Photo overlay glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-pink-500/20 to-transparent pointer-events-none"></div>
+                          </div>
+
+                          {/* Floating hearts around photo */}
+                          <div className="absolute -top-6 -left-6 text-5xl animate-heart-pulse">
+                            💕
+                          </div>
+                          <div
+                            className="absolute -top-6 -right-6 text-5xl animate-heart-pulse"
+                            style={{ animationDelay: "0.3s" }}
+                          >
+                            💖
+                          </div>
+                          <div
+                            className="absolute -bottom-6 -left-6 text-5xl animate-heart-pulse"
+                            style={{ animationDelay: "0.6s" }}
+                          >
+                            💗
+                          </div>
+                          <div
+                            className="absolute -bottom-6 -right-6 text-5xl animate-heart-pulse"
+                            style={{ animationDelay: "0.9s" }}
+                          >
+                            💝
+                          </div>
+                        </div>
+
+                        {/* Caption under photo */}
+                        <div
+                          className="mt-8 animate-fade-in-up"
+                          style={{ animationDelay: "0.5s" }}
+                        >
+                          <p
+                            className="text-3xl md:text-4xl text-pink-200 font-bold mb-2"
+                            style={{
+                              fontFamily: "'Pacifico', cursive",
+                              textShadow: "0 0 20px rgba(255,182,193,0.5)",
+                            }}
+                          >
+                            This is Us... 💕
+                          </p>
+                          <p
+                            className="text-xl text-purple-200 italic"
+                            style={{ fontFamily: "'Caveat', cursive" }}
+                          >
+                            Our beautiful moments together ✨
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Romantic Wishes Section */}
                   {showWishes && (
@@ -870,6 +957,69 @@ export default function ValentinesFlowers() {
           }
         }
 
+        @keyframes photo-reveal {
+          0% {
+            opacity: 0;
+            transform: scale(0.5) rotateY(90deg);
+          }
+          50% {
+            transform: scale(1.1) rotateY(0deg);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) rotateY(0deg);
+          }
+        }
+
+        @keyframes sparkle-explosion {
+          0% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(0);
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(3);
+          }
+        }
+
+        @keyframes border-spin {
+          0% {
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.8);
+          }
+          100% {
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+          }
+        }
+
+        @keyframes photo-zoom {
+          0% {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        @keyframes heart-pulse {
+          0%,
+          100% {
+            transform: scale(1);
+            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.5));
+          }
+          50% {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
+          }
+        }
+
         @keyframes spin-slow {
           from {
             transform: rotate(0deg);
@@ -981,6 +1131,26 @@ export default function ValentinesFlowers() {
 
         .animate-fade-in-slow {
           animation: fade-in-slow 1.5s ease-out;
+        }
+
+        .animate-photo-reveal {
+          animation: photo-reveal 1.2s ease-out;
+        }
+
+        .animate-sparkle-explosion {
+          animation: sparkle-explosion 1.5s ease-out forwards;
+        }
+
+        .animate-border-spin {
+          animation: border-spin 3s ease-in-out infinite;
+        }
+
+        .animate-photo-zoom {
+          animation: photo-zoom 1s ease-out;
+        }
+
+        .animate-heart-pulse {
+          animation: heart-pulse 2s ease-in-out infinite;
         }
 
         .animate-spin-slow {
