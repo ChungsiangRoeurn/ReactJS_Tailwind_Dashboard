@@ -8,14 +8,14 @@ This project focuses on clean architecture, reusable components, responsive layo
 
 ## ✨ Features
 
-- 🔐 Login & Register UI (Static for now)
-- 🖥 Modern Admin Dashboard UI
-- 📱 Fully Responsive Design
-- 🎨 Clean & Professional Layout
-- 📂 Collapsible / Toggle Sidebar
-- 🎯 Active Route Highlighting
-- 🌙 Smooth Transitions & Animations
-- 🔧 Reusable Components Structure
+* 🔐 Login & Register UI (Static for now)
+* 🖥 Modern Admin Dashboard UI
+* 📱 Fully Responsive Design
+* 🎨 Clean & Professional Layout
+* 📂 Collapsible / Toggle Sidebar
+* 🎯 Active Route Highlighting
+* 🌙 Smooth Transitions & Animations
+* 🔧 Reusable Components Structure
 
 > Note: Authentication is currently static. You can directly access the admin panel via `/admin` route.
 
@@ -23,10 +23,10 @@ This project focuses on clean architecture, reusable components, responsive layo
 
 ## 🛠 Tech Stack
 
-- **ReactJS** – Frontend Library
-- **React Router DOM** – Routing System
-- **TailwindCSS** – Utility-first CSS Framework
-- **React Icons** – Icon Library
+* **ReactJS** – Frontend Library
+* **React Router DOM** – Routing System
+* **TailwindCSS** – Utility-first CSS Framework
+* **React Icons** – Icon Library
 
 ---
 
@@ -36,46 +36,40 @@ This project focuses on clean architecture, reusable components, responsive layo
 src/
 │
 ├── assets/
-│   ├── images/
-│   ├── gifs/
-│   └── icons/
 │
 ├── components/
-│   ├── layout/
-│   │   ├── Header.jsx
-│   │   ├── Sidebar.jsx
-│   │
-│   ├── ui/
-│   │   ├── Button.jsx
-│   │   ├── Card.jsx
-│   │   └── Input.jsx
+│   ├── Header.jsx
+│   └── Sidebar.jsx
 │
 ├── layouts/
-│   ├── AdminLayout.jsx
-│   └── AuthLayout.jsx
+│   └── AdminLayout.jsx
 │
 ├── pages/
-│   ├── auth/
-│   │   ├── Login.jsx
-│   │   └── Register.jsx
-│   │
 │   ├── admin/
 │   │   ├── Dashboard.jsx
-│   │   ├── Stores.jsx
-│   │   ├── Products.jsx
-│   │   ├── Users.jsx
 │   │   ├── Orders.jsx
-│   │   └── Settings.jsx
+│   │   ├── Products.jsx
+│   │   ├── Settings.jsx
+│   │   ├── Stores.jsx
+│   │   └── Users.jsx
 │   │
-│   └── Home.jsx
-│
-├── routes/
-│   └── AppRoutes.jsx
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   └── Register.jsx
 │
 ├── App.jsx
 ├── main.jsx
+├── App.css
 └── index.css
 ```
+
+This structure keeps the project simple and organized:
+
+* `components/` → Reusable layout components like Header and Sidebar
+* `layouts/` → Layout wrappers such as AdminLayout
+* `pages/admin/` → All admin dashboard pages
+* `pages/` → Public pages like Login, Register, and Home
+* `assets/` → Static resources (images, GIFs, etc.)
 
 ---
 
@@ -83,9 +77,9 @@ src/
 
 Currently:
 
-- Login & Register pages are UI only.
-- No backend authentication yet.
-- You can manually navigate to:
+* Login & Register pages are UI only.
+* No backend authentication yet.
+* You can manually navigate to:
 
 ```
 /admin
@@ -95,20 +89,20 @@ to access the admin dashboard.
 
 Future improvement:
 
-- JWT Authentication
-- Protected Routes
-- Role-based Access Control
+* JWT Authentication
+* Protected Routes
+* Role-based Access Control
 
 ---
 
 ## 🧭 Sidebar Features
 
-- Toggle open / close
-- Smooth width transition
-- Icon-only mode when collapsed
-- Active route highlight
-- Logout button
-- User info section
+* Toggle open / close
+* Smooth width transition
+* Icon-only mode when collapsed
+* Active route highlight
+* Logout button
+* User info section
 
 ---
 
@@ -116,9 +110,9 @@ Future improvement:
 
 This dashboard is fully responsive:
 
-- Desktop → Full sidebar
-- Tablet → Collapsible sidebar
-- Mobile → Compact layout
+* Desktop → Full sidebar
+* Tablet → Collapsible sidebar
+* Mobile → Compact layout
 
 Built using Tailwind’s responsive utilities.
 
@@ -129,8 +123,8 @@ Built using Tailwind’s responsive utilities.
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone <your-repo-url>
-cd your-project-name
+git clone https://github.com/ChungsiangRoeurn/ReactJS_Tailwind_Dashboard
+cd ReactJS_Tailwind_Dashboard
 ```
 
 ### 2️⃣ Install Dependencies
@@ -161,12 +155,12 @@ pnpm start
 
 ## 🎨 UI Highlights
 
-- Gradient overlays
-- Background GIF effects for dynamic visuals
-- Glassmorphism design elements
-- Smooth hover animations
-- Clean spacing & typography
-- Modern toggle sidebar interaction
+* Gradient overlays
+* Background GIF effects for dynamic visuals
+* Glassmorphism design elements
+* Smooth hover animations
+* Clean spacing & typography
+* Modern toggle sidebar interaction
 
 ---
 
@@ -176,18 +170,18 @@ This project uses **animated GIF backgrounds** in both the Header and Sidebar to
 
 ### Why GIF Background?
 
-- Adds movement and depth to the interface
-- Makes the dashboard feel futuristic and alive
-- Enhances visual engagement without heavy animation libraries
-- Combined with dark overlay (`bg-black/60`, `bg-black/70`) for better readability
+* Adds movement and depth to the interface
+* Makes the dashboard feel futuristic and alive
+* Enhances visual engagement without heavy animation libraries
+* Combined with dark overlay (`bg-black/60`, `bg-black/70`) for better readability
 
 ### Implementation Strategy
 
-- GIF is placed using `position: absolute`
-- Overlay layer added for contrast
-- Content wrapped inside `relative z-10`
-- Uses `object-cover` for full coverage
-- Optimized for responsiveness
+* GIF is placed using `position: absolute`
+* Overlay layer added for contrast
+* Content wrapped inside `relative z-10`
+* Uses `object-cover` for full coverage
+* Optimized for responsiveness
 
 This approach keeps the UI modern while maintaining performance and clean structure.
 
@@ -195,12 +189,12 @@ This approach keeps the UI modern while maintaining performance and clean struct
 
 ## 🔮 Future Improvements
 
-- Backend Integration (Node.js / Laravel / NestJS)
-- Database Integration
-- Real Authentication System
-- Dashboard Charts (Recharts / Chart.js)
-- Dark Mode Toggle
-- API Data Integration
+* Backend Integration (Node.js / Laravel / NestJS)
+* Database Integration
+* Real Authentication System
+* Dashboard Charts (Recharts / Chart.js)
+* Dark Mode Toggle
+* API Data Integration
 
 ---
 
@@ -208,12 +202,6 @@ This approach keeps the UI modern while maintaining performance and clean struct
 
 **Chungsiang Roeurn**
 Full Stack Developer | React Enthusiast
-
----
-
-## 📜 License
-
-This project is open-source and available for learning and portfolio purposes.
 
 ---
 
