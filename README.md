@@ -6,6 +6,8 @@ This project focuses on clean architecture, reusable components, responsive layo
 
 ---
 
+![image alt](https://github.com/ChungsiangRoeurn/ReactJS_Tailwind_Dashboard/blob/458d311c47f95e36a7d8156d3e1917a6546fce83/image_demo.png)
+
 ## ✨ Features
 
 * 🔐 Login & Register UI (Static for now)
