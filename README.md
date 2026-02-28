@@ -1,16 +1,226 @@
-# React + Vite
+# 🚀 Modern Admin Dashboard (React + TailwindCSS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully responsive and modern **Admin Dashboard UI** built using **ReactJS**, **TailwindCSS**, and **React Icons**.
 
-Currently, two official plugins are available:
+This project focuses on clean architecture, reusable components, responsive layout, and a toggleable sidebar for better user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🔐 Login & Register UI (Static for now)
+- 🖥 Modern Admin Dashboard UI
+- 📱 Fully Responsive Design
+- 🎨 Clean & Professional Layout
+- 📂 Collapsible / Toggle Sidebar
+- 🎯 Active Route Highlighting
+- 🌙 Smooth Transitions & Animations
+- 🔧 Reusable Components Structure
 
-## Expanding the ESLint configuration
+> Note: Authentication is currently static. You can directly access the admin panel via `/admin` route.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- **ReactJS** – Frontend Library
+- **React Router DOM** – Routing System
+- **TailwindCSS** – Utility-first CSS Framework
+- **React Icons** – Icon Library
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── assets/
+│   ├── images/
+│   ├── gifs/
+│   └── icons/
+│
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   ├── Sidebar.jsx
+│   │
+│   ├── ui/
+│   │   ├── Button.jsx
+│   │   ├── Card.jsx
+│   │   └── Input.jsx
+│
+├── layouts/
+│   ├── AdminLayout.jsx
+│   └── AuthLayout.jsx
+│
+├── pages/
+│   ├── auth/
+│   │   ├── Login.jsx
+│   │   └── Register.jsx
+│   │
+│   ├── admin/
+│   │   ├── Dashboard.jsx
+│   │   ├── Stores.jsx
+│   │   ├── Products.jsx
+│   │   ├── Users.jsx
+│   │   ├── Orders.jsx
+│   │   └── Settings.jsx
+│   │
+│   └── Home.jsx
+│
+├── routes/
+│   └── AppRoutes.jsx
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+
+---
+
+## 🔐 Authentication (Static)
+
+Currently:
+
+- Login & Register pages are UI only.
+- No backend authentication yet.
+- You can manually navigate to:
+
+```
+/admin
+```
+
+to access the admin dashboard.
+
+Future improvement:
+
+- JWT Authentication
+- Protected Routes
+- Role-based Access Control
+
+---
+
+## 🧭 Sidebar Features
+
+- Toggle open / close
+- Smooth width transition
+- Icon-only mode when collapsed
+- Active route highlight
+- Logout button
+- User info section
+
+---
+
+## 📱 Responsive Design
+
+This dashboard is fully responsive:
+
+- Desktop → Full sidebar
+- Tablet → Collapsible sidebar
+- Mobile → Compact layout
+
+Built using Tailwind’s responsive utilities.
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd your-project-name
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pnpm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+### 3️⃣ Start Development Server
+
+```bash
+pnpm dev
+```
+
+or
+
+```bash
+pnpm start
+```
+
+---
+
+## 🎨 UI Highlights
+
+- Gradient overlays
+- Background GIF effects for dynamic visuals
+- Glassmorphism design elements
+- Smooth hover animations
+- Clean spacing & typography
+- Modern toggle sidebar interaction
+
+---
+
+## 🎥 Animated GIF Background
+
+This project uses **animated GIF backgrounds** in both the Header and Sidebar to create a modern and dynamic UI experience.
+
+### Why GIF Background?
+
+- Adds movement and depth to the interface
+- Makes the dashboard feel futuristic and alive
+- Enhances visual engagement without heavy animation libraries
+- Combined with dark overlay (`bg-black/60`, `bg-black/70`) for better readability
+
+### Implementation Strategy
+
+- GIF is placed using `position: absolute`
+- Overlay layer added for contrast
+- Content wrapped inside `relative z-10`
+- Uses `object-cover` for full coverage
+- Optimized for responsiveness
+
+This approach keeps the UI modern while maintaining performance and clean structure.
+
+---
+
+## 🔮 Future Improvements
+
+- Backend Integration (Node.js / Laravel / NestJS)
+- Database Integration
+- Real Authentication System
+- Dashboard Charts (Recharts / Chart.js)
+- Dark Mode Toggle
+- API Data Integration
+
+---
+
+## 👨‍💻 Author
+
+**Chungsiang Roeurn**
+Full Stack Developer | React Enthusiast
+
+---
+
+## 📜 License
+
+This project is open-source and available for learning and portfolio purposes.
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+
+---
+
+### 💡 Built with passion for modern UI and clean frontend architecture.
