@@ -9,6 +9,7 @@ import Settings from "./pages/admin/Settings";
 import Products from "./pages/admin/Products";
 import Orders from "./pages/admin/Orders";
 import Stores from "./pages/admin/Stores";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,15 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/admin" element={<AdminLayout />}>
+
+      <Route
+        path="/admin/*"
+        element={
+          <ProtectedRoute>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route index element={<Dashboard />} />
         <Route path="users" element={<Users />} />
         <Route path="settings" element={<Settings />} />
