@@ -1,7 +1,18 @@
 import { useProducts } from "../../hooks/useProducts";
 import StarRating from "../../components/StartRating";
 
-function ProductCard({ product }) {
+interface Product {
+  id: number;
+  image: string;
+  title: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+  price: number;
+}
+
+function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-white rounded-2xl shadow hover:shadow-2xl transition duration-300 p-5 flex flex-col">
       <div className="h-40 flex items-center justify-center mb-4">

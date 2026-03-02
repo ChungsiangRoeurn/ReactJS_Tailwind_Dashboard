@@ -1,6 +1,6 @@
 import { FaStar, FaRegStar } from "react-icons/fa";
 
-function StarRating({ rating }) {
+function StarRating({ rating }: { rating: number }) {
   const roundedRating = Math.round(rating);
 
   return (

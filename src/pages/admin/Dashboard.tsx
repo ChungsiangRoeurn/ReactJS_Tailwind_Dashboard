@@ -1,5 +1,3 @@
-import React from "react";
-
 function Dashboard() {
   const stats = [
     { title: "Total Products", value: 120 },
