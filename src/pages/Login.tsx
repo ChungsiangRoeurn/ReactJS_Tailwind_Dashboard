@@ -4,7 +4,9 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 export default function Login() {
-  const { login } = useAuth();
+  const auth = useAuth();
+  if (!auth) throw new Error("AuthContext not available");
+  const { login } = auth;
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -14,14 +16,14 @@ export default function Login() {
     password: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       await login(form.username, form.password);

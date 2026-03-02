@@ -1,6 +1,11 @@
 import { LuPanelLeftClose, LuPanelRightClose } from "react-icons/lu";
 
-function Header({ toggleSidebar, isOpen }) {
+type HeaderProps = {
+  toggleSidebar: () => void;
+  isOpen: boolean;
+};
+
+function Header({ toggleSidebar, isOpen }: HeaderProps) {
   return (
     <header className="relative h-16 flex items-center justify-between px-6 overflow-hidden">
       <img

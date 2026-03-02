@@ -1,8 +1,10 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { ReactNode } from "react";
 
-function ProtectedRoute({ children }) {
-  const { user, loading } = useAuth();
+function ProtectedRoute({ children }: { children: ReactNode }) {
+  const auth = useAuth();
+  const { user, loading } = auth ?? { user: null, loading: true };
 
   if (loading) {
     return null;

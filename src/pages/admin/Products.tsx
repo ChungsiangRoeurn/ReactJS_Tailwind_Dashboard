@@ -54,7 +54,7 @@ function Products() {
             <tbody>
               {filteredProducts.length === 0 && (
                 <tr>
-                  <td colSpan="5" className="text-center py-6 text-gray-500">
+                  <td colSpan={5} className="text-center py-6 text-gray-500">
                     No products found
                   </td>
                 </tr>

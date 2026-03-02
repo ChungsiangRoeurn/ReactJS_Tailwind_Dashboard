@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
 
-function Sidebar({ isOpen }) {
+function Sidebar({ isOpen }: { isOpen: boolean }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -47,9 +47,7 @@ function Sidebar({ isOpen }) {
 
       <div className="absolute inset-0 bg-black/70"></div>
 
-      {/* Sidebar Content */}
       <div className="relative z-10 h-full flex flex-col justify-between p-4 backdrop-blur-md border-r border-white/10">
-        {/* Navigation */}
         <div>
           <h2
             className={`text-2xl font-bold text-cyan-300 text-center mb-8 transition-opacity ${
