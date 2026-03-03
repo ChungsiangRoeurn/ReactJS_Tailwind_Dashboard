@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { productsApi } from "../api/productApi";
+import { getAllProducts } from "../api/product-api";
 
 export const useProducts = <T = any>() => {
   const [products, setProducts] = useState<T[]>([]);
@@ -9,9 +9,10 @@ export const useProducts = <T = any>() => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await productsApi.getAll();
-        setProducts(response.data as T[]);
+        const data = await getAllProducts();
+        setProducts(data as unknown as T[]);
       } catch (err) {
+        console.error(err);
         setError("Failed to fetch products");
       } finally {
         setLoading(false);

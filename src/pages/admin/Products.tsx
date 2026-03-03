@@ -1,13 +1,15 @@
 import { useState, useMemo } from "react";
 import { useProducts } from "../../hooks/useProducts";
+import { Product } from "../../types/products";
 
 function Products() {
   const { products, error, loading } = useProducts();
   const [search, setSearch] = useState("");
 
+  // Filter products by name
   const filteredProducts = useMemo(() => {
-    return products.filter((product) =>
-      product.title.toLowerCase().includes(search.toLowerCase()),
+    return products.filter((product: Product) =>
+      product.name.toLowerCase().includes(search.toLowerCase()),
     );
   }, [products, search]);
 
@@ -67,10 +69,10 @@ function Products() {
                 >
                   <td className="px-6 py-4">{index + 1}</td>
                   <td className="px-6 py-4 font-medium max-w-xs truncate">
-                    {product.title}
+                    {product.name}
                   </td>
                   <td className="px-6 py-4 font-semibold text-cyan-600">
-                    ${product.price.toFixed(2)}
+                    ${parseFloat(product.price).toFixed(2)}
                   </td>
                   <td className="px-6 py-4">
                     <span
@@ -109,9 +111,14 @@ function Products() {
             key={product.id}
             className="bg-white shadow-md rounded-xl p-4 flex flex-col"
           >
-            <h3 className="font-semibold truncate">{product.title}</h3>
+            <img
+              src={product.image_url}
+              alt={product.name}
+              className="w-full h-40 object-cover rounded mb-2"
+            />
+            <h3 className="font-semibold truncate">{product.name}</h3>
             <p className="text-cyan-600 font-bold mt-2">
-              ${product.price.toFixed(2)}
+              ${parseFloat(product.price).toFixed(2)}
             </p>
             <span
               className={`mt-2 px-3 py-1 rounded-full text-sm font-medium inline-block ${

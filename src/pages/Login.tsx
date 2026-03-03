@@ -4,32 +4,23 @@ import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 export default function Login() {
-  const auth = useAuth();
-  if (!auth) throw new Error("AuthContext not available");
-  const { login } = auth;
-  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    // email: "",
-    username: "",
-    password: "",
-  });
-
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      await login(form.username, form.password);
+      await login({ email, password });
       navigate("/admin");
-    } catch (err) {
-      alert("Invalid credentials");
+    } catch (error) {
+      alert("Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,22 +41,12 @@ export default function Login() {
         <h1 className="text-3xl font-bold text-center mb-4 text-cyan-200">
           Login
         </h1>
-        {/* 
         <input
           type="email"
           name="email"
           placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          className="border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-        /> */}
-
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={form.username}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="border rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         />
 
@@ -74,14 +55,14 @@ export default function Login() {
             type={showPassword ? "text" : "password"}
             name="password"
             placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full border rounded px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           />
 
           <span
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 hover:text-white transition"
+            className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 transition"
           >
             {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
           </span>
@@ -89,9 +70,9 @@ export default function Login() {
 
         <button
           type="submit"
-          className="bg-cyan-500 text-white font-semibold py-3 rounded-full shadow-lg hover:bg-cyan-600 transition-transform transform hover:scale-105"
+          className={`${loading ? "opacity-50 cursor-not-allowed" : ""} bg-cyan-500 text-white font-semibold py-3 rounded-full shadow-lg hover:bg-cyan-600 transition-transform transform hover:scale-105 ...`}
         >
-          Login
+          {loading ? "Logging in" : "Login"}
         </button>
 
         <p className="text-center text-cyan-200 mt-2">
