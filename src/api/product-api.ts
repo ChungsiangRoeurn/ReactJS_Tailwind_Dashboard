@@ -1,7 +1,7 @@
 import { Product } from "../types/products";
 import api from "./axiosInstance";
 
-export const getAllProducts = async (): Promise<Product> => {
+export const getAllProducts = async (): Promise<Product[]> => {
   const response = await api.get("/api/product");
   return response.data;
 };
@@ -12,8 +12,8 @@ export const getProductById = async (id: number): Promise<Product> => {
 };
 
 export const createProduct = async (
-  product: Partial<Product[]>,
-): Promise<Product[]> => {
+  product: Partial<Product>,
+): Promise<Product> => {
   const response = await api.post("/api/product", product);
   return response.data;
 };
