@@ -8,20 +8,18 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
+import { useAuth } from "../context/AuthContext";
 
 function Sidebar({ isOpen }: { isOpen: boolean }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const user = {
-    name: "Chungsiang",
-    role: "Administrator",
-  };
-
+  const { user, logout } = useAuth();
   const handleLogout = () => {
-    // clear token here if you have one
+    logout();
     navigate("/");
   };
+  if (!user) return null;
 
   const navItems = [
     { name: "Dashboard", path: "/admin", icon: <MdSpaceDashboard /> },

@@ -4,11 +4,11 @@ import { ReactNode } from "react";
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const auth = useAuth();
-  const { user, loading } = auth ?? { user: null, loading: true };
+  const { user } = auth ?? { user: null, loading: true };
 
-  if (loading) {
-    return null;
-  }
+  // if (loading) {
+  //   return null;
+  // }
 
   if (!user) {
     return <Navigate to="/login" replace />;
