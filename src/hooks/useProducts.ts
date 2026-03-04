@@ -29,22 +29,16 @@ export const useProducts = () => {
 
   // 🔹 Fetch single product
   const fetchProductById = async (id: number) => {
-    setLoading(true);
-    setError(null);
     try {
       return await getProductById(id);
     } catch (err) {
       setError("Failed to fetch product");
       return null;
-    } finally {
-      setLoading(false);
     }
   };
 
   // 🔹 Create product
   const addProduct = async (product: Partial<Product>) => {
-    setLoading(true);
-    setError(null);
     try {
       const newProduct = await createProduct(product);
       setProducts((prev) => [...prev, newProduct]);
@@ -52,15 +46,11 @@ export const useProducts = () => {
     } catch (err) {
       setError("Failed to create product");
       return null;
-    } finally {
-      setLoading(false);
     }
   };
 
   // 🔹 Update product
   const editProduct = async (id: number, product: Partial<Product>) => {
-    setLoading(true);
-    setError(null);
     try {
       const updated = await updateProduct(id, product);
       setProducts((prev) => prev.map((p) => (p.id === id ? updated : p)));
@@ -68,22 +58,16 @@ export const useProducts = () => {
     } catch (err) {
       setError("Failed to update product");
       return null;
-    } finally {
-      setLoading(false);
     }
   };
 
   // 🔹 Delete product
   const removeProduct = async (id: number) => {
-    setLoading(true);
-    setError(null);
     try {
       await deleteProduct(id);
       setProducts((prev) => prev.filter((p) => p.id !== id));
     } catch (err) {
       setError("Failed to delete product");
-    } finally {
-      setLoading(false);
     }
   };
 

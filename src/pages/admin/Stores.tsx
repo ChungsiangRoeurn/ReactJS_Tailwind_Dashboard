@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useProducts } from "../../hooks/useProducts";
 import { Product } from "../../types/products";
 import { FaSearch } from "react-icons/fa";
+import { FiBox, FiImage, FiX } from "react-icons/fi";
 
 // ─── Product Detail Modal ────────────────────────────────────────────────────
 function ProductDetailModal({
@@ -32,19 +33,7 @@ function ProductDetailModal({
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-gray-300">
-              <svg
-                className="w-14 h-14"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.2}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01"
-                />
-              </svg>
+              <FiImage className="w-14 h-14" />
               <span className="text-sm">No image</span>
             </div>
           )}
@@ -54,19 +43,7 @@ function ProductDetailModal({
             onClick={onClose}
             className="absolute top-3 right-3 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md transition"
           >
-            <svg
-              className="w-4 h-4 text-gray-600"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.5}
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <FiX className="w-4 h-4 text-gray-600" />
           </button>
 
           {/* Stock badge */}
@@ -118,19 +95,7 @@ function ProductDetailModal({
           )}
 
           <div className="flex items-center gap-2 mb-5 text-sm text-gray-500">
-            <svg
-              className="w-4 h-4 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.8}
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
-              />
-            </svg>
+            <FiBox className="w-4 h-4 text-gray-400" />
             <span>{product.stock} units available</span>
           </div>
 
@@ -173,19 +138,7 @@ function ProductCard({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-200">
-            <svg
-              className="w-12 h-12"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01"
-              />
-            </svg>
+            <FiImage className="size-12" />
           </div>
         )}
 
@@ -254,7 +207,7 @@ function ProductCard({
 
 // ─── Stores Page ─────────────────────────────────────────────────────────────
 function Stores() {
-  const { products, error, loading } = useProducts<Product>();
+  const { products, error, loading } = useProducts();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [search, setSearch] = useState("");
 
@@ -282,7 +235,7 @@ function Stores() {
     );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Header */}
         <div className="text-center mb-10">
@@ -315,19 +268,7 @@ function Stores() {
         {/* Grid */}
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-gray-300">
-            <svg
-              className="w-14 h-14 mb-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.2}
-                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-              />
-            </svg>
+            <FiImage className="size-12" />
             <p className="text-sm">No products found</p>
           </div>
         ) : (
