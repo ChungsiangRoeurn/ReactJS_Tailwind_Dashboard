@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Product } from "../types/products";
+import { FiTrash2, FiUpload, FiX } from "react-icons/fi";
 
 // ── Configure your Cloudinary credentials here ──────────────────────────────
 const CLOUDINARY_CLOUD_NAME = (import.meta as any).env
@@ -11,7 +12,7 @@ const CLOUDINARY_UPLOAD_PRESET = (import.meta as any).env
 interface ProductModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (data: Partial<Product>) => void;
+  onSubmit: (data: Partial<Product>) => Promise<boolean> | boolean;
   initialData?: Product | null;
 }
 
@@ -81,7 +82,7 @@ function ProductModal({
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const uploadToCloudinary = async (file: File): Promise<string> => {
+  const uploadToCloudinary = async (file: File) => {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -91,12 +92,19 @@ function ProductModal({
       `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
       { method: "POST", body: data },
     );
-    if (!res.ok) throw new Error("Image upload failed");
+
+    if (!res.ok) {
+      const error = await res.json();
+      console.error("Cloudinary error:", error);
+      throw new Error("Image upload failed");
+    }
+
     const json = await res.json();
-    return json.secure_url as string;
+    return json.secure_url;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setUploading(true);
     try {
       let finalImageUrl = form.image_url || "";
@@ -105,11 +113,12 @@ function ProductModal({
         finalImageUrl = await uploadToCloudinary(imageFile);
       }
 
-      onSubmit({ ...form, image_url: finalImageUrl });
-      onClose();
+      const result = await onSubmit({ ...form, image_url: finalImageUrl });
+
+      if (result) onClose();
     } catch (err) {
       console.error("Submit error:", err);
-      alert("Image upload failed. Please try again.");
+      alert("Image upload or update failed. Please try again.");
     } finally {
       setUploading(false);
     }
@@ -140,19 +149,12 @@ function ProductModal({
             onClick={onClose}
             className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
           >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.5}
-              viewBox="0 0 24 24"
+            <button
+              onClick={onClose}
+              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+              <FiX className="w-4 h-4" />
+            </button>
           </button>
         </div>
 
@@ -176,19 +178,7 @@ function ProductModal({
                     onClick={removeImage}
                     className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white text-red-500 text-xs font-semibold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5"
                   >
-                    <svg
-                      className="w-3.5 h-3.5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
+                    <FiTrash2 className="w-3.5 h-3.5" />
                     Remove
                   </button>
                 </div>
@@ -209,21 +199,15 @@ function ProductModal({
                 }`}
               >
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${dragOver ? "bg-cyan-100" : "bg-gray-100"}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors ${
+                    dragOver ? "bg-cyan-100" : "bg-gray-100"
+                  }`}
                 >
-                  <svg
-                    className={`w-5 h-5 ${dragOver ? "text-cyan-500" : "text-gray-400"}`}
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={1.8}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                    />
-                  </svg>
+                  <FiUpload
+                    className={`w-5 h-5 ${
+                      dragOver ? "text-cyan-500" : "text-gray-400"
+                    }`}
+                  />
                 </div>
                 <p className="text-sm font-medium text-gray-600">
                   {dragOver ? "Drop to upload" : "Click or drag image here"}
